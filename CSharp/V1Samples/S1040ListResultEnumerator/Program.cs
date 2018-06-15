@@ -33,7 +33,7 @@ namespace S1040ListResultEnumerator
 {
 
     /// <summary>
-    /// Markdown Builder.
+    /// ListResult Enumerator.
     /// </summary>
     class Program
     {
@@ -57,7 +57,7 @@ namespace S1040ListResultEnumerator
              * is reading this code in Main() from top to bottom. 
              * *********************************************************/
 
-            SampleUtil.ShowTitle("[S1030] ListResult Enumerator(Pagination)", "Get first list result, and then get next list result...");
+            SampleUtil.ShowTitle("[S1040] ListResult Enumerator(Pagination)", "Get first list result, and then get next list result...");
 
 
             // Load encrypted token that is encrypted by 'S0010SetupSamples'.

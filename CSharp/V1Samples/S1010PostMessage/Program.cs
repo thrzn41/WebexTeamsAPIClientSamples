@@ -28,7 +28,7 @@ using Thrzn41.Util;
 using Thrzn41.WebexTeams;
 using Thrzn41.WebexTeams.Version1;
 
-namespace S1040ListResultEnumerator
+namespace S1010PostMessage
 {
 
     /// <summary>
