@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>S1030MarkdownBuilder</AssemblyName>
+    <RootNamespace>S1030MarkdownBuilder</RootNamespace>
+    <Authors>thrzn41</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Thrzn41.WebexTeams" Version="1.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SampleShared\SampleSharedNetC.csproj" />
+  </ItemGroup>
+
+</Project>
