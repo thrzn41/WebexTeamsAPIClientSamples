@@ -82,10 +82,51 @@ namespace S1030MarkdownBuilder
                     // You can build markdown that can be used in Webex Teams API.
                     var md = new MarkdownBuilder();
 
-                    md.Append("Hello, ").AppendBold("WebexTeams").Append("!!");
+                    // Bold
+                    md.Append("Hello, Bold ").AppendBold("WebexTeams").Append("!!").AppendLine();
 
+                    // Italic
+                    md.Append("Hello, Italic ").AppendItalic("WebexTeams").Append("!!").AppendLine();
+
+                    // Link
                     md.AppendParagraphSeparater();
-                    md.AppendBlockQuote("Hi!");
+                    md.AppendBlockQuote("Hi!").AppendLink("This is Link", new Uri("https://www.google.com/")).Append(".");
+
+                    // Block Quote
+                    md.AppendParagraphSeparater();
+                    md.AppendBlockQuote("Hi! This is Block Quote.");
+
+                    // Ordered List
+                    md.AppendParagraphSeparater();
+                    md.AppendBold("This is Ordered list:").AppendLine();
+                    md.AppendOrderedList("list item 01");
+                    md.AppendOrderedList("list item 02");
+                    md.AppendOrderedList("list item 03");
+
+                    // Unordered List
+                    md.AppendParagraphSeparater();
+                    md.AppendBold("This is Unordered list:").AppendLine();
+                    md.AppendUnorderedList("list item 01");
+                    md.AppendUnorderedList("list item 02");
+                    md.AppendUnorderedList("list item 03");
+
+                    // Inline Code.
+                    md.AppendParagraphSeparater();
+                    md.Append("The ").AppendInLineCode("print(\"Hello, World!!\")").Append(" is inline code.");
+
+                    // Code Block.
+                    md.AppendParagraphSeparater();
+                    md.Append("This is Code Block:").AppendLine();
+                    md.BeginCodeBlock()
+                        .Append("#include <stdio.h>\n")
+                        .Append("\n")
+                        .Append("int main(void)\n")
+                        .Append("{\n")
+                        .Append("    printf(\"Hello, World!!\\n\");\n")
+                        .Append("\n")
+                        .Append("    return 0;\n")
+                        .Append("}\n")
+                      .EndCodeBlock();
 
                     var r = await teams.CreateMessageAsync(space, md.ToString());
 
@@ -97,6 +138,24 @@ namespace S1030MarkdownBuilder
                     {
                         SampleUtil.ShowMessage("Failed to post a message: StatusCode = {0}", r.HttpStatusCode);
                     }
+
+
+
+                    // Mentioned to All.
+                    md.Clear();
+                    md.Append("Hi ").AppendMentionToAll().Append(", this message is mentioned to all in the space.");
+
+                    r = await teams.CreateMessageAsync(space, md.ToString());
+
+                    if (r.IsSuccessStatus)
+                    {
+                        SampleUtil.ShowMessage("Succeeded to post a message: Id = {0}", r.Data.Id);
+                    }
+                    else
+                    {
+                        SampleUtil.ShowMessage("Failed to post a message: StatusCode = {0}", r.HttpStatusCode);
+                    }
+
 
                 }
             }
